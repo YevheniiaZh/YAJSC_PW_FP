@@ -9,13 +9,13 @@ This repository contains automated end-to-end tests for demo application, built 
 - **Test Runner**: Playwright Test Runner
 - **Reporting**: HTML Reports
 
-## 🔧 Prerequisites
+##  Prerequisites
 
 Before running the tests, ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/) (version 14 or higher)
 
-## 📦 Installation
+##  Installation
 
 1. Clone the repository:
 ```bash
@@ -33,7 +33,7 @@ npm install
 npx playwright install
 ```
 
-## 🏃‍♂️ Running Tests
+##  Running Tests
 
 ### Run all tests
 ```bash
@@ -55,7 +55,7 @@ npx playwright test tests/login.spec.ts
 npx playwright test --debug
 ```
 
-## 📊 Test Reports
+##  Test Reports
 
 After running tests, you can view the detailed HTML report:
 
@@ -68,7 +68,7 @@ npx playwright show-report
 **Base URL**: https://practicesoftwaretesting.com
 
 
-## 📚 Learning Resources
+##  Learning Resources
 
 - [Playwright Documentation](https://playwright.dev/docs/intro)
 - [Playwright Best Practices](https://playwright.dev/docs/best-practices)
