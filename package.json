@@ -1,0 +1,25 @@
+{
+  "name": "yajsc_pw_fp",
+  "version": "1.0.0",
+  "description": "Reposotory for Final Project of AQA course YAJSC",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YevheniiaZh/YAJSC_PW_FP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/YevheniiaZh/YAJSC_PW_FP/issues"
+  },
+  "homepage": "https://github.com/YevheniiaZh/YAJSC_PW_FP#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@types/node": "^24.2.1"
+  }
+}
