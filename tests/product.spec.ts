@@ -18,8 +18,4 @@ await expect(productDetails.productTitle).toContainText(searchedProductName);
 await expect(productDetails.productPrice).toContainText(searchedProductPrice);
 await expect(productDetails.addToCartButton).toBeVisible();
 await expect(productDetails.addToFavourites).toBeVisible();
-
-
-
-
 });

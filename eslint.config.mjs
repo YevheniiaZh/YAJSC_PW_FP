@@ -24,7 +24,7 @@ export default tseslint.config(
 },
 {
     ...playwright.configs['flat/recommended'],
-    files: ['tests/**'],
+    files: ['tests/**', 'pages/**'],
     rules: {
       ...playwright.configs['flat/recommended'].rules,
       // Customize Playwright rules

@@ -19,6 +19,6 @@ test('login', async ({ page }) => {
   const accountPage = new AccountPage(page);
   await expect(accountPage.pageTitle).toContainText('My account');
   await expect(accountPage.header.navMenuUser).toContainText(user_name);
-  
+
 });
 
