@@ -11,7 +11,7 @@ export default tseslint.config(
     languageOptions: {
       parserOptions: {
         projectService: {
-            allowDefaultProject: ["eslint.config.mjs"]
+          allowDefaultProject: ['eslint.config.mjs'],
         },
         tsconfigRootDir: import.meta.dirname,
       },
@@ -19,10 +19,24 @@ export default tseslint.config(
   },
   {
     rules: {
-         "@typescript-eslint/no-floating-promises": "error"
-    }
-},
-{
+      '@typescript-eslint/no-floating-promises': 'error',
+      //'indent': ['error', 2],
+      'quotes': ['error', 'single'],
+      'semi': ['error', 'always'],
+      'comma-dangle': ['error', 'always-multiline'],
+      'comma-spacing': ['error', { 'before': false, 'after': true }],
+      'key-spacing': ['error', { 'beforeColon': false, 'afterColon': true }],
+      'object-curly-spacing': ['error', 'always'],
+      'array-bracket-spacing': ['error', 'never'],
+      'space-before-function-paren': ['error', 'never'],
+      'space-in-parens': ['error', 'never'],
+      'space-before-blocks': ['error', 'always'],
+      'keyword-spacing': ['error', { 'before': true, 'after': true }],
+      'no-trailing-spaces': 'error',
+      'no-multiple-empty-lines': ['error', { 'max': 2, 'maxEOF': 1 }],
+    },
+  },
+  {
     ...playwright.configs['flat/recommended'],
     files: ['tests/**', 'pages/**'],
     rules: {
@@ -30,5 +44,5 @@ export default tseslint.config(
       // Customize Playwright rules
       // ...
     },
-  }
+  },
 );
