@@ -7,23 +7,19 @@ export class HomePage extends BasePage {
   readonly sortSelect: Locator = this.page.getByTestId('sort');
 
 
-  async selectSortOption(value: string) {
-        await this.sortSelect.click();
+  async selectSortOption(value: string): Promise<void> {
         await this.sortSelect.selectOption(`${value}`);
         await this.page.waitForLoadState('domcontentloaded');
-        //before adding additional time, waiting for load state seemed to be not enough
-        await this.page.waitForTimeout(1000);
+        await this.page.waitForResponse(res =>
+          res.url().includes('/products') && res.status() === 200,
+  );
     };
 
-    async selectCategoryCheckbox(name: string) {
+    async selectCategoryCheckbox(name: string): Promise<void> {
         await this.page.getByRole('checkbox', { name: `${name}` }).check();
         await this.page.waitForLoadState('domcontentloaded');
-        await this.page.waitForTimeout(1000);
+        await this.page.waitForResponse(res =>
+          res.url().includes('/products') && res.status() === 200,
+  );
     };
-
-    getSortedProduct(productSortingParam: string[], sortOrder: 'asc' | 'desc'): string[] {
-    const sortedProducts = [...productSortingParam].sort((a, b) => a.localeCompare(b));
-    return sortOrder === 'desc' ? sortedProducts.reverse() : sortedProducts;
-  }
-
 }

@@ -4,6 +4,7 @@ import { ProductDetails } from '../pages/productDetails.page';
 import { CartPage } from '../pages/cart.page';
 import { SortOption, SortOrder } from '../pages/enums/sorting.options';
 import { PowerTools } from '../pages/enums/filter.categories';
+import { ArrayUtils } from '../helpers/array.utils';
 
 // Test data
 const testProducts = {
@@ -61,7 +62,7 @@ test('Verify user can add product to cart', async({ page }) => {
 });
 
 //sorting options from enum, that represent sorting dropdown on page
-const sortNameOptions = [
+[
 {
     order: SortOrder.Ascending,
     value: SortOption.AscendingByName,
@@ -70,23 +71,22 @@ const sortNameOptions = [
     order: SortOrder.Descending,
     value: SortOption.DescendingByName,
 },
-];
-
-for (const sortOption of sortNameOptions) {
-    test(`Verify user can sort product by name ${sortOption.order}`, async({ page }) =>{
+].forEach(({ order, value }) =>{
+  test(`Verify user can sort product by name ${order}`, async({ page }) =>{
         const homePage = new HomePage(page);
         await homePage.navigateToPage('');
         await expect (homePage.productTitle).not.toHaveCount(0);
-        await homePage.selectSortOption(sortOption.value);
+        await homePage.selectSortOption(value);
 
         const actualProductNames = await homePage.productTitle.allTextContents();
-        const expectedSortedNames = homePage.getSortedProduct(actualProductNames, sortOption.order);
+        const expectedSortedNames = ArrayUtils.getSortedProduct(actualProductNames, order);
 
         expect(actualProductNames).toEqual(expectedSortedNames);
     });
- }
+});
 
- const sortingPriceOptions = [
+
+[
    {
     order: SortOrder.Ascending,
     value: SortOption.AscendingByPrice,
@@ -95,21 +95,20 @@ for (const sortOption of sortNameOptions) {
     order: SortOrder.Descending,
     value: SortOption.DescendingByPrice,
    },
- ];
-
- for (const sortOption of sortingPriceOptions) {
-    test(`Verify user can sort product by price ${sortOption.order}`, async({ page }) =>{
+ ].forEach(({ order, value }) =>{
+  test(`Verify user can sort product by price ${order}`, async({ page }) =>{
          const homePage = new HomePage(page);
         await homePage.navigateToPage('');
         await expect (homePage.productTitle).not.toHaveCount(0);
-        await homePage.selectSortOption(sortOption.value);
+        await homePage.selectSortOption(value);
 
         const actualSortedProductPrices = await homePage.productPrice.allTextContents();
-        const expectedSortedProductPrices = homePage.getSortedProduct(actualSortedProductPrices, sortOption.order);
+        const expectedSortedProductPrices = ArrayUtils.getSortedProduct(actualSortedProductPrices, order);
 
         expect(actualSortedProductPrices).toEqual(expectedSortedProductPrices);
     });
- }
+ });
+
 
   test('Verify user can filter products by category', async({ page }) => {
         const homePage = new HomePage(page);
