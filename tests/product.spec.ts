@@ -2,7 +2,7 @@ import  { expect } from '@playwright/test';
 import { SortOption, SortOrder } from '../pages/enums/sorting.options';
 import { PowerTools } from '../pages/enums/filter.categories';
 import { ArrayUtils } from '../helpers/array.utils';
-import { test } from '../fixtures/app';
+import { test } from '../fixtures/fixtures';
 
 // Test data
 const testProducts = {
